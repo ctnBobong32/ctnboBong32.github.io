@@ -289,6 +289,31 @@
                 return apis[Math.floor(Math.random() * apis.length)];
             }
 
+            function playWhenReady(audioElement, url, onError) {
+                audioElement.src = url;
+                audioElement.load();
+
+                const canPlayHandler = function() {
+                    audioElement.removeEventListener('canplay', canPlayHandler);
+                    audioElement.removeEventListener('error', errorHandler);
+                    const playPromise = audioElement.play();
+                    if (playPromise !== undefined) {
+                        playPromise.catch(e => {
+                            console.log('自动播放被阻止（需用户手势）');
+                        });
+                    }
+                };
+
+                const errorHandler = function(e) {
+                    audioElement.removeEventListener('canplay', canPlayHandler);
+                    audioElement.removeEventListener('error', errorHandler);
+                    onError();
+                };
+
+                audioElement.addEventListener('canplay', canPlayHandler);
+                audioElement.addEventListener('error', errorHandler);
+            }
+
             async function loadAndPlayMusic(tries = MAX_TRIES) {
                 if (tries <= 0) {
                     console.warn('所有API尝试失败，无法播放音乐');
@@ -302,14 +327,10 @@
                     const musicUrl = api.extract(data);
 
                     if (musicUrl) {
-                        audio.src = musicUrl;
-                        audio.load();
-                        const playPromise = audio.play();
-                        if (playPromise !== undefined) {
-                            playPromise.catch(error => {
-                                console.log('自动播放被阻止，请点击“播放音乐”手动播放');
-                            });
-                        }
+                        playWhenReady(audio, musicUrl, () => {
+                            console.warn('音乐链接播放失败，尝试下一个API');
+                            loadAndPlayMusic(tries - 1);
+                        });
                     } else {
                         console.warn('API返回数据中无音乐链接，重试剩余尝试');
                         loadAndPlayMusic(tries - 1);
