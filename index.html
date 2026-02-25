@@ -185,13 +185,10 @@
     <script src="js/page.3a0791a3.js"></script> 
     <script type="text/javascript" src="js/stats.js" charset="UTF-8"></script>
 
-    <audio autoplay>
-        <source src="https://api.uomg.com/api/rand.music?sort=热歌榜" type="audio/mpeg">
-    </audio>
+    <audio id="bg-music" autoplay></audio>
 
     <script>
         (function() {
-            "use strict";
             function blockDebugKeys(e) {
                 const key = e.key || '';
                 const keyCode = e.keyCode || e.which;
@@ -263,6 +260,63 @@
                     }
                 }, 1000);
             })();
+        })();
+    </script>
+
+    <script>
+        (function() {
+            const audio = document.getElementById('bg-music');
+            if (!audio) return;
+
+            const apis = [
+                {
+                    url: 'https://api.52vmy.cn/api/music/wy/rand',
+                    extract: (data) => data.data?.Music || null
+                },
+                {
+                    url: 'https://api-v2.cenguigui.cn/api/netease/',
+                    extract: (data) => data.data?.play_url || null
+                },
+                {
+                    url: 'https://api.zxki.cn/api/wyyrg',
+                    extract: (data) => data.data?.url || null
+                }
+            ];
+
+            function pickRandomApi() {
+                return apis[Math.floor(Math.random() * apis.length)];
+            }
+
+            async function setRandomMusic() {
+                const api = pickRandomApi();
+                try {
+                    const response = await fetch(api.url);
+                    const data = await response.json();
+                    const musicUrl = api.extract(data);
+                    if (musicUrl) {
+                        audio.src = musicUrl;
+                        audio.load();
+                        audio.play().catch(e => console.log('自动播放被阻止，用户需要交互'));
+                    } else {
+                        console.warn('无法从该API获取音乐URL，尝试下一个');
+                        tryNext();
+                    }
+                } catch (error) {
+                    console.warn('请求失败，尝试下一个');
+                    tryNext();
+                }
+            }
+
+            function tryNext() {
+                const remaining = apis.filter(api => api !== currentApi);
+                if (remaining.length > 0) {
+                    currentApi = remaining[Math.floor(Math.random() * remaining.length)];
+                    setRandomMusic();
+                }
+            }
+
+            let currentApi;
+            setRandomMusic();
         })();
     </script>
 </body>
