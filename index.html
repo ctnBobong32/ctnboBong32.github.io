@@ -26,11 +26,11 @@
 >
     <nav> 
         <a href="/" class="active">主站</a> <a class="clip"></a>
-        <a href="//zh.minecraft.wiki/">wiki</a> 
-        <a href="//minecraft.net">mc</a>
-        <a href="//java.com">java</a>
+        <a href="//zh.minecraft.wiki/">我的世界wiki</a> 
+        <a href="//minecraft.net">mc官网</a>
+        <a href="//freetv.262832.xyz">免费电影</a>
         <a class="clip"></a> 
-        <a href="//mc.163.com">网易MC</a>  
+        <a href="//music.262832.xyz">免费音乐</a>  
     </nav>
 
     <link href="css/toastr.css" rel="stylesheet">
@@ -177,7 +177,7 @@
             <div class="container"> 
                 <h3>CTN的网站</h3> 
                 <p>互联网的尽头，新世界的起点</p> 
-                <p class="c"><a href="/">播放音乐</a></p> 
+                <p class="c"><a href="#" id="play-music-link">播放音乐</a></p> 
             </div> 
         </div>
     </div>
@@ -185,7 +185,7 @@
     <script src="js/page.3a0791a3.js"></script> 
     <script type="text/javascript" src="js/stats.js" charset="UTF-8"></script>
 
-    <audio id="bg-music" autoplay></audio>
+    <audio id="bg-music" autoplay playsinline webkit-playsinline></audio>
 
     <script>
         (function() {
@@ -283,40 +283,52 @@
                 }
             ];
 
+            const MAX_TRIES = 3;
+
             function pickRandomApi() {
                 return apis[Math.floor(Math.random() * apis.length)];
             }
 
-            async function setRandomMusic() {
+            async function loadAndPlayMusic(tries = MAX_TRIES) {
+                if (tries <= 0) {
+                    console.warn('所有API尝试失败，无法播放音乐');
+                    return;
+                }
+
                 const api = pickRandomApi();
                 try {
                     const response = await fetch(api.url);
                     const data = await response.json();
                     const musicUrl = api.extract(data);
+
                     if (musicUrl) {
                         audio.src = musicUrl;
                         audio.load();
-                        audio.play().catch(e => console.log('自动播放被阻止，用户需要交互'));
+                        const playPromise = audio.play();
+                        if (playPromise !== undefined) {
+                            playPromise.catch(error => {
+                                console.log('自动播放被阻止，请点击“播放音乐”手动播放');
+                            });
+                        }
                     } else {
-                        console.warn('无法从该API获取音乐URL，尝试下一个');
-                        tryNext();
+                        console.warn('API返回数据中无音乐链接，重试剩余尝试');
+                        loadAndPlayMusic(tries - 1);
                     }
                 } catch (error) {
-                    console.warn('请求失败，尝试下一个');
-                    tryNext();
+                    console.warn('API请求失败，重试剩余尝试');
+                    loadAndPlayMusic(tries - 1);
                 }
             }
 
-            function tryNext() {
-                const remaining = apis.filter(api => api !== currentApi);
-                if (remaining.length > 0) {
-                    currentApi = remaining[Math.floor(Math.random() * remaining.length)];
-                    setRandomMusic();
-                }
-            }
+            loadAndPlayMusic();
 
-            let currentApi;
-            setRandomMusic();
+            const playLink = document.getElementById('play-music-link');
+            if (playLink) {
+                playLink.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    loadAndPlayMusic();
+                });
+            }
         })();
     </script>
 </body>
