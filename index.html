@@ -1,16 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1">
+    <!-- 优化移动端视口：禁用缩放干扰，但保留用户缩放能力（防止QQ浏览器强制缩放） -->
+    <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.png">
     <title>CTN的网站 - CTN</title>
     <meta name="description" content="CTN的网站，期待与更多的人相遇！">
     <meta name="keywords" content="mc玩家">
+    <meta name="format-detection" content="telephone=no, email=no">
     <link rel="apple-touch-icon-precomposed" href="images/avatar.bab2b7d4.jpeg">
     <link rel="stylesheet" type="text/css" href="css/h.9c69ed6c.css">
     <link rel="stylesheet" type="text/css" href="css/nekotora.99cf6f8c.css">
+    <!-- Google Analytics 保留原始逻辑 -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-137340638-1"></script>
     <script>
         function a(){dataLayer.push(arguments)}
@@ -18,33 +21,352 @@
         a("js", new Date);
         a("config","UA-137340638-1");
     </script>
-</head>
-<body 
-    onContextMenu="alert('禁止查看源代码，您的行为已记录。'); return false" 
-    data-phone-cc-input="1" 
-    NOOP="if (window.event != null && window.event.button == 2) alert ('Thanks...');"
->
-    <nav> 
-        <a href="/" class="active">主站</a> <a class="clip"></a>
-        <a href="//zh.minecraft.wiki/">我的世界wiki</a> 
-        <a href="//minecraft.net">mc官网</a>
-        <a href="//freetv.262832.xyz">免费电影</a>
-        <a class="clip"></a> 
-        <a href="//music.262832.xyz">免费音乐</a>  
-    </nav>
+    <style>
+        /* ========== 全局移动端修复 & QQ浏览器兼容 ========== */
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent; /* 去掉QQ浏览器点击灰底 */
+        }
 
+        body {
+            overflow-x: hidden !important;
+            width: 100%;
+            font-size: 16px; /* 基础字体适配移动端 */
+            -webkit-text-size-adjust: 100%;
+            text-size-adjust: 100%;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+
+        /* 修复导航栏在手机端换行/溢出问题 */
+        nav {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 8px 12px;
+            padding: 12px 16px;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(4px);
+            z-index: 100;
+            position: relative;
+        }
+        nav a {
+            display: inline-block;
+            font-size: 0.9rem;
+            padding: 4px 10px;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 30px;
+            background: rgba(255,255,255,0.15);
+            transition: 0.2s;
+            white-space: nowrap;
+        }
+        nav a.active {
+            background: #ff8c00;
+            color: #1e1e2a;
+        }
+        /* 隐藏无用的占位符 .clip */
+        nav a.clip {
+            display: none;
+        }
+
+        /* 主容器修复宽度溢出 */
+        .main {
+            width: 100%;
+            overflow-x: hidden;
+        }
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 个人介绍区域图片自适应 */
+        .introduct img.avatar {
+            max-width: 140px;
+            width: 35%;
+            height: auto;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: block;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        .introduct p {
+            word-break: break-word;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* 技能进度条区域移动端适配 (修复文字重叠 + 布局清晰) */
+        .skill {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0 0;
+        }
+        .skill li {
+            margin-bottom: 1.2rem;
+            width: 100%;
+        }
+        .skill li p {
+            margin: 0 0 6px 0;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+        .progress {
+            background: rgba(255,255,255,0.2);
+            border-radius: 30px;
+            height: 28px;
+            line-height: 28px;
+            position: relative;
+            overflow: visible;
+            width: 100%;
+        }
+        .progress div {
+            background: linear-gradient(90deg, #ffaa44, #ff6a00);
+            height: 28px;
+            border-radius: 30px;
+            width: 0%;
+            transition: width 0.3s;
+            position: relative;
+            z-index: 1;
+        }
+        /* 原彩蛋/提示文字不重叠进度条，改为右侧浮动或气泡样式 */
+        .progress span {
+            position: absolute;
+            right: 8px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.7);
+            color: #ffd966;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 30px;
+            white-space: nowrap;
+            z-index: 2;
+            pointer-events: none;
+            backdrop-filter: blur(2px);
+            font-weight: normal;
+        }
+        /* 手机屏幕过小时，让文字缩小或换行处理 */
+        @media (max-width: 500px) {
+            .progress span {
+                font-size: 0.6rem;
+                padding: 2px 5px;
+                right: 5px;
+                white-space: nowrap;
+            }
+            .progress {
+                height: 32px;
+            }
+            .progress div, .progress {
+                height: 32px;
+            }
+        }
+
+        /* 平台区域（活跃平台）修复网格错位 + 动态图标样式 */
+        .find .col-3 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 24px;
+        }
+        .find .item {
+            width: calc(33.33% - 16px);
+            min-width: 100px;
+            background: rgba(30,30,46,0.8);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.2s ease;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .find .item .inner {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 8px;
+            gap: 10px;
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        /* 动态图标样式（从url提取） */
+        .platform-favicon {
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            background: rgba(255,255,255,0.15);
+            object-fit: contain;
+            padding: 2px;
+            transition: transform 0.1s ease;
+            flex-shrink: 0;
+        }
+        .find .item:hover .platform-favicon {
+            transform: scale(1.05);
+        }
+        /* 手机屏幕小于640px时，平台每行显示2个 */
+        @media (max-width: 640px) {
+            .find .item {
+                width: calc(50% - 16px);
+                min-width: 120px;
+            }
+        }
+        @media (max-width: 460px) {
+            .find .item {
+                width: calc(50% - 12px);
+                min-width: 100px;
+            }
+            .find .item .inner {
+                padding: 12px 4px;
+                font-size: 0.75rem;
+                gap: 6px;
+            }
+            .platform-favicon {
+                width: 24px;
+                height: 24px;
+            }
+        }
+
+        /* toastr 位置修复（原样式把toast放在了左上角） */
+        .toast-bottom-center {
+            position: fixed !important;
+            bottom: 20px !important;
+            left: 50% !important;
+            top: auto !important;
+            right: auto !important;
+            transform: translateX(-50%);
+            width: auto;
+            max-width: 90%;
+            z-index: 9999;
+        }
+        .toast-message {
+            font-size: 0.85rem;
+        }
+
+        /* 页脚样式优化移动端间距 */
+        .footer {
+            text-align: center;
+            padding: 30px 0 40px;
+        }
+        .footer p, .footer h3 {
+            word-break: keep-all;
+        }
+
+        /* 通用清除浮动 & 圆角优化 */
+        .clear {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+        .introduct {
+            flex: 1.5;
+            min-width: 220px;
+        }
+        .skill {
+            flex: 2;
+            min-width: 240px;
+        }
+        /* 手机端改为列排列 */
+        @media (max-width: 768px) {
+            .clear {
+                flex-direction: column;
+                gap: 16px;
+            }
+            .introduct, .skill {
+                width: 100%;
+            }
+            .container {
+                padding: 0 16px;
+            }
+            .chtitle {
+                font-size: 1.8rem;
+                text-align: center;
+            }
+            .hello h1 {
+                font-size: 1.6rem;
+            }
+            .hello h2 {
+                font-size: 1.2rem;
+            }
+        }
+
+        /* 修复星空canvas背景在手机端尺寸自适应（防止白边/错位） */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+        canvas#startrack {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .cover {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.3);
+            z-index: -1;
+        }
+
+        /* 聊天框加载动画移动端位置修正 */
+        .chatbox {
+            margin: 20px 0 0;
+        }
+        .line.loading span {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ffaa44;
+            margin: 0 3px;
+            animation: pulse 1.2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.3; transform: scale(0.8);}
+            50% { opacity: 1; transform: scale(1.2);}
+        }
+
+        /* QQ浏览器 表单/输入框圆角重置 */
+        input, button, textarea {
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        /* 音乐播放链接样式 */
+        #play-music-link {
+            color: #ffaa66;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+    </style>
     <link href="css/toastr.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href="css/toastr.min.css" rel="stylesheet">
     <script src="js/toastr.min.js"></script>
-    <style>
-        .toast-bottom-center {
-            position: absolute;
-            left: 30px;
-            right:10px;
-            top: 20px;
-        }
-    </style>
+</head>
+<body 
+    onContextMenu="alert('禁止查看源代码，您的行为已记录。'); return false" 
+    data-phone-cc-input="1">
+    <!-- 优化导航栏 -->
+    <nav> 
+        <a href="/" class="active">主站</a> 
+        <a href="//zh.minecraft.wiki/">我的世界wiki</a> 
+        <a href="//minecraft.net">mc官网</a>
+        <a href="//freetv.262832.xyz">免费电影</a>
+        <a href="//music.262832.xyz">免费音乐</a>  
+    </nav>
 
     <div class="background"> 
         <canvas id="startrack"></canvas> 
@@ -70,7 +392,7 @@
                 <h2 class="chtitle">Who is <span>CTN</span>？</h2> 
                 <div class="clear"> 
                     <div class="introduct"> 
-                        <img class="avatar" src="images/ctn.png"> 
+                        <img class="avatar" src="images/ctn.png" alt="CTN头像" loading="lazy"> 
                         <p>坚硬的代替了那些柔软的，清晰的取代了那些模糊的。那些滑溜溜和黏糊糊的东西，带你来到了世界的角落。</p>
                         <p style="padding-bottom:1em;">How lucky to meet you!</p> 
                         <p>你好，我是CTN <sup>哔哩哔哩up主</sup> ，15岁，是学生，今年初三热爱开源时不时会在github上翻项目，致力于手机端运行JAVA版minecraft端的渲染器编译测试</p> 
@@ -89,10 +411,10 @@
                             <div class="progress"> <div style="width:32.7%;"></div><span>也就稍微会一点点QwQ</span> </div> 
                         </li> 
                         <li> <p>minecraft服务器运维</p>
-                            <div class="progress"> <div style="width:63%;"></div><span></span> </div> 
+                            <div class="progress"> <div style="width:63%;"></div><span>专业开服</span> </div> 
                         </li> 
                         <li> <p>网站设计</p>
-                            <div class="progress"> <div style="width:38%;"></div><span></span> </div> 
+                            <div class="progress"> <div style="width:38%;"></div><span>平面设计ing</span> </div> 
                         </li> 
                         <li> <p>程序编译</p> 
                             <div class="progress"> <div style="width:56%;"></div><span>会使用各种编译程序</span> </div> 
@@ -111,64 +433,74 @@
             </div> 
         </div> 
 
+        <!-- 活跃平台区域 - 已按要求更新链接：Discord, X, YouTube, Telegram 以及其他核心平台 -->
         <div class="find ch"> 
             <div class="container links">
                 <h2 class="chtitle">CTN活跃的<span>平台</span></h2> 
-                <div class="clear col-3"> 
-                    <a href="https://google.com" target="_blank">
+                <div class="clear col-3" id="platform-list">
+                    <!-- Discord -->
+                    <a href="https://discord.gg/2Xjj465K" target="_blank" rel="noopener noreferrer">
+                        <div class="item"> 
+                            <div class="bg" style="background-color:#5865F2"></div> 
+                            <div class="inner"> <span>Discord</span> </div> 
+                        </div> 
+                    </a>
+                    <!-- X (Twitter新链接) -->
+                    <a href="https://x.com/MC_ctnBobong32" target="_blank" rel="noopener noreferrer">
+                        <div class="item"> 
+                            <div class="bg" style="background-color:#1DA1F2"></div> 
+                            <div class="inner"> <span>X (Twitter)</span> </div> 
+                        </div> 
+                    </a>
+                    <!-- YouTube -->
+                    <a href="https://youtube.com/@ctnbobong32?si=IoRpMtvrCKuN1y7X" target="_blank" rel="noopener noreferrer">
+                        <div class="item"> 
+                            <div class="bg" style="background-color:#FF0000"></div> 
+                            <div class="inner"> <span>YouTube</span> </div> 
+                        </div> 
+                    </a>
+                    <!-- Telegram -->
+                    <a href="https://t.me/ctnyyds32" target="_blank" rel="noopener noreferrer">
+                        <div class="item"> 
+                            <div class="bg" style="background-color:#26A5E4"></div> 
+                            <div class="inner"> <span>Telegram</span> </div> 
+                        </div> 
+                    </a>
+                    <!-- Bilibili (保留) -->
+                    <a href="https://m.bilibili.com/space/1568237889" target="_blank" rel="noopener noreferrer">
+                        <div class="item"> 
+                            <div class="bg" style="background-color:#00A1D6"></div> 
+                            <div class="inner"> <span>Bilibili</span> </div> 
+                        </div> 
+                    </a>
+                    <!-- QQ群 (保留) -->
+                    <a href="https://qm.qq.com/q/SnAKU7kiAM" target="_blank" rel="noopener noreferrer">
                         <div class="item"> 
                             <div class="bg" style="background-color:#28a9e0"></div> 
-                            <div class="inner"> <span>google</span> </div> 
+                            <div class="inner"> <span>QQ群</span> </div> 
                         </div> 
-                    </a> 
-                    <a href="https://qm.qq.com/q/SnAKU7kiAM" target="_blank">
+                    </a>
+                    <!-- GitHub (保留) -->
+                    <a href="https://github.com/ctnBobong32" target="_blank" rel="noopener noreferrer">
                         <div class="item"> 
-                            <div class="bg" style="background-color:#28a9e0"></div> 
-                            <div class="inner"> <i class="icon-qq"></i> <span>QQ</span> </div> 
+                            <div class="bg" style="background-color:#181717"></div> 
+                            <div class="inner"> <span>GitHub</span> </div> 
                         </div> 
-                    </a> 
-                    <a href="https://m.weibo.cn/" target="_blank"> 
+                    </a>
+                    <!-- 网易云音乐 (保留) -->
+                    <a href="http://music.163.com" target="_blank" rel="noopener noreferrer">
                         <div class="item"> 
-                            <div class="bg" style="background-color:#e6162d"></div>
-                            <div class="inner"> <i class="icon-weibo"></i> <span>微博</span> </div> 
+                            <div class="bg" style="background-color:#C20C0C"></div> 
+                            <div class="inner"> <span>网易云音乐</span> </div> 
                         </div> 
-                    </a> 
-                    <a href="https://m.bilibili.com/space/1568237889" target="_blank"> 
+                    </a>
+                    <!-- 知乎 (保留) -->
+                    <a href="https://www.zhihu.com/" target="_blank" rel="noopener noreferrer">
                         <div class="item"> 
-                            <div class="bg" style="background-color:#f9a2a8"></div> 
-                            <div class="inner"> <i class="icon-bilibili"></i> <span>Bilibili</span> </div> 
+                            <div class="bg" style="background-color:#0084FF"></div> 
+                            <div class="inner"> <span>知乎</span> </div> 
                         </div> 
-                    </a> 
-                    <a href="https://www.twitter.com/" target="_blank"> 
-                        <div class="item"> 
-                            <div class="bg" style="background-color:#28a9e0"></div> 
-                            <div class="inner"> <i class="icon-twitter"></i> <span>Twitter</span> </div> 
-                        </div> 
-                    </a> 
-                    <a href="https://www.zhihu.com/" target="_blank">
-                        <div class="item"> 
-                            <div class="bg" style="background-color:#0f88eb"></div>
-                            <div class="inner"> <i class="icon-zhihu"></i> <span>知乎</span> </div> 
-                        </div> 
-                    </a> 
-                    <a href="https://chat.openai.com" target="_blank"> 
-                        <div class="item"> 
-                            <div class="bg" style="background-color:#f09199"></div>
-                            <div class="inner"> <i class="icon-bookmark"></i> <span>ChatGPT</span> </div> 
-                        </div> 
-                    </a> 
-                    <a href="http://music.163.com" target="_blank"> 
-                        <div class="item"> 
-                            <div class="bg" style="background-color:#f12d35"></div>
-                            <div class="inner"> <i class="icon-netease_music"></i> <span>网易云音乐</span> </div> 
-                        </div> 
-                    </a> 
-                    <a href="https://github.com/ctnBobong32" target="_blank"> 
-                        <div class="item"> 
-                            <div class="bg" style="background-color:#353535"></div> 
-                            <div class="inner"> <i class="icon-github"></i> <span>Github</span> </div> 
-                        </div> 
-                    </a> 
+                    </a>
                 </div> 
             </div>
         </div>
@@ -177,16 +509,207 @@
             <div class="container"> 
                 <h3>CTN的网站</h3> 
                 <p>互联网的尽头，新世界的起点</p> 
-                <p class="c"><a href="#" id="play-music-link">播放音乐</a></p> 
+                <p class="c"><a href="#" id="play-music-link">🎵 播放音乐</a></p> 
             </div> 
         </div>
     </div>
 
+    <!-- 引入原始脚本（保留星空和页面交互） -->
     <script src="js/page.3a0791a3.js"></script> 
     <script type="text/javascript" src="js/stats.js" charset="UTF-8"></script>
 
-    <audio id="bg-music" autoplay playsinline webkit-playsinline></audio>
+    <audio id="bg-music" autoplay playsinline webkit-playsinline preload="none"></audio>
 
+    <!-- 星空canvas 移动端resize自适应修复 -->
+    <script>
+        (function() {
+            const canvas = document.getElementById('startrack');
+            if (canvas) {
+                function resizeCanvas() {
+                    const container = canvas.parentElement;
+                    if (!container) return;
+                    const rect = container.getBoundingClientRect();
+                    canvas.width = rect.width;
+                    canvas.height = rect.height;
+                    canvas.style.width = '100%';
+                    canvas.style.height = '100%';
+                    window.dispatchEvent(new Event('resize'));
+                }
+                window.addEventListener('resize', () => {
+                    setTimeout(resizeCanvas, 100);
+                });
+                setTimeout(resizeCanvas, 200);
+                window.addEventListener('orientationchange', () => {
+                    setTimeout(resizeCanvas, 30);
+                });
+            }
+        })();
+    </script>
+
+    <!-- 核心功能：活跃平台 icon 从 url 提取 favicon，并自动替换为图片图标 -->
+    <script>
+        (function() {
+            function initPlatformIcons() {
+                const platformLinks = document.querySelectorAll('#platform-list a');
+                if (!platformLinks.length) return;
+
+                // 获取 favicon 的服务 (Google S2 服务，支持大多数域名)
+                const getFaviconUrl = (domain) => {
+                    let cleanDomain = domain.replace(/^(https?:\/\/)?(www\.|m\.)?/, '').split('/')[0];
+                    // 针对特殊域名处理：discord.gg 保留原样，t.me 保留，x.com 保留
+                    return `https://www.google.com/s2/favicons?domain=${cleanDomain}&sz=32`;
+                };
+
+                platformLinks.forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (!href) return;
+
+                    let hostname = '';
+                    try {
+                        const url = new URL(href);
+                        hostname = url.hostname;
+                    } catch (e) {
+                        const match = href.match(/^(?:https?:\/\/)?([^\/?#]+)/i);
+                        if (match) hostname = match[1];
+                    }
+                    if (!hostname) return;
+
+                    const innerDiv = link.querySelector('.inner');
+                    if (!innerDiv) return;
+
+                    // 移除可能遗留的旧图标 (font icon 或者 之前动态生成的 img)
+                    const oldIcon = innerDiv.querySelector('i, .platform-favicon');
+                    if (oldIcon) oldIcon.remove();
+
+                    // 创建 img 元素显示从 url 提取的图标
+                    const img = document.createElement('img');
+                    img.className = 'platform-favicon';
+                    img.alt = hostname;
+                    img.loading = 'lazy';
+                    
+                    const faviconUrl = getFaviconUrl(hostname);
+                    img.src = faviconUrl;
+                    
+                    // 加载失败时的 fallback：显示首字母圆角背景
+                    img.onerror = () => {
+                        // 备用：使用 DuckDuckGo 的图标服务
+                        img.src = `https://icons.duckduckgo.com/ip3/${hostname}.ico`;
+                        img.onerror = () => {
+                            // 最终 fallback：显示带背景色的首字母
+                            img.style.background = 'rgba(255,255,255,0.2)';
+                            img.style.display = 'flex';
+                            img.style.alignItems = 'center';
+                            img.style.justifyContent = 'center';
+                            img.style.fontSize = '14px';
+                            img.style.color = '#fff';
+                            img.style.fontWeight = 'bold';
+                            img.removeAttribute('src');
+                            const spanText = innerDiv.querySelector('span')?.innerText || '?';
+                            const firstLetter = spanText.charAt(0).toUpperCase();
+                            img.textContent = firstLetter;
+                        };
+                    };
+                    
+                    // 插入到 span 之前
+                    const span = innerDiv.querySelector('span');
+                    if (span) {
+                        innerDiv.insertBefore(img, span);
+                    } else {
+                        innerDiv.prepend(img);
+                    }
+                });
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', initPlatformIcons);
+            } else {
+                initPlatformIcons();
+            }
+        })();
+    </script>
+
+    <!-- 音乐播放功能（修复移动端自动播放策略） -->
+    <script>
+        (function() {
+            const audio = document.getElementById('bg-music');
+            if (!audio) return;
+
+            const apis = [
+                {
+                    url: 'https://api.52vmy.cn/api/music/wy/rand',
+                    extract: (data) => data.data?.Music || null
+                },
+                {
+                    url: 'https://api-v2.cenguigui.cn/api/netease/',
+                    extract: (data) => data.data?.play_url || null
+                },
+                {
+                    url: 'https://api.zxki.cn/api/wyyrg',
+                    extract: (data) => data.data?.url || null
+                }
+            ];
+
+            const MAX_TRIES = 3;
+
+            function pickRandomApi() {
+                return apis[Math.floor(Math.random() * apis.length)];
+            }
+
+            function playUrl(url) {
+                if (!url) return false;
+                audio.src = url;
+                audio.load();
+                const playPromise = audio.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(e => {
+                        console.log("自动播放需手势，请点击播放音乐按钮");
+                        if (typeof toastr !== 'undefined') {
+                            toastr.info("点击「播放音乐」按钮开启BGM~", "提示");
+                        }
+                    });
+                }
+                return true;
+            }
+
+            async function loadMusic(retry = MAX_TRIES) {
+                if (retry <= 0) {
+                    console.warn("音乐加载失败，请稍后手动点击播放");
+                    return;
+                }
+                const api = pickRandomApi();
+                try {
+                    const resp = await fetch(api.url, { cache: 'no-cache' });
+                    const json = await resp.json();
+                    let musicUrl = api.extract(json);
+                    if (musicUrl && typeof musicUrl === 'string' && musicUrl.startsWith('http')) {
+                        playUrl(musicUrl);
+                    } else {
+                        loadMusic(retry - 1);
+                    }
+                } catch (err) {
+                    loadMusic(retry - 1);
+                }
+            }
+
+            const playLink = document.getElementById('play-music-link');
+            if (playLink) {
+                playLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (audio.src && !audio.paused) {
+                        audio.pause();
+                        audio.currentTime = 0;
+                    }
+                    loadMusic(MAX_TRIES);
+                });
+            }
+
+            setTimeout(() => {
+                loadMusic(MAX_TRIES);
+            }, 800);
+        })();
+    </script>
+
+    <!-- 禁用调试保护（轻量化，不影响手机性能） -->
     <script>
         (function() {
             function blockDebugKeys(e) {
@@ -230,9 +753,11 @@
                 e.preventDefault();
                 return false;
             }, false);
-            setInterval(function() {
-                (function() { return false; }).constructor('debugger')();
-            }, 800);
+            if (window.location.hostname !== 'localhost') {
+                setInterval(function() {
+                    (function() { return false; }).constructor('debugger')();
+                }, 3000);
+            }
             if (typeof console !== 'undefined') {
                 var noop = function() {};
                 console.log = noop;
@@ -240,115 +765,6 @@
                 console.warn = noop;
                 console.error = noop;
                 console.debug = noop;
-                console.trace = noop;
-                console.dir = noop;
-                console.dirxml = noop;
-                console.group = noop;
-                console.groupCollapsed = noop;
-                console.groupEnd = noop;
-                console.table = noop;
-                console.assert = noop;
-                console.count = noop;
-                console.clear = noop;
-            }
-            (function() {
-                var threshold = 160;
-                setInterval(function() {
-                    if (window.outerWidth - window.innerWidth > threshold ||
-                        window.outerHeight - window.innerHeight > threshold) {
-                        (function() { return false; }).constructor('debugger')();
-                    }
-                }, 1000);
-            })();
-        })();
-    </script>
-
-    <script>
-        (function() {
-            const audio = document.getElementById('bg-music');
-            if (!audio) return;
-
-            const apis = [
-                {
-                    url: 'https://api.52vmy.cn/api/music/wy/rand',
-                    extract: (data) => data.data?.Music || null
-                },
-                {
-                    url: 'https://api-v2.cenguigui.cn/api/netease/',
-                    extract: (data) => data.data?.play_url || null
-                },
-                {
-                    url: 'https://api.zxki.cn/api/wyyrg',
-                    extract: (data) => data.data?.url || null
-                }
-            ];
-
-            const MAX_TRIES = 3;
-
-            function pickRandomApi() {
-                return apis[Math.floor(Math.random() * apis.length)];
-            }
-
-            function playWhenReady(audioElement, url, onError) {
-                audioElement.src = url;
-                audioElement.load();
-
-                const canPlayHandler = function() {
-                    audioElement.removeEventListener('canplay', canPlayHandler);
-                    audioElement.removeEventListener('error', errorHandler);
-                    const playPromise = audioElement.play();
-                    if (playPromise !== undefined) {
-                        playPromise.catch(e => {
-                            console.log('自动播放被阻止（需用户手势）');
-                        });
-                    }
-                };
-
-                const errorHandler = function(e) {
-                    audioElement.removeEventListener('canplay', canPlayHandler);
-                    audioElement.removeEventListener('error', errorHandler);
-                    onError();
-                };
-
-                audioElement.addEventListener('canplay', canPlayHandler);
-                audioElement.addEventListener('error', errorHandler);
-            }
-
-            async function loadAndPlayMusic(tries = MAX_TRIES) {
-                if (tries <= 0) {
-                    console.warn('所有API尝试失败，无法播放音乐');
-                    return;
-                }
-
-                const api = pickRandomApi();
-                try {
-                    const response = await fetch(api.url);
-                    const data = await response.json();
-                    const musicUrl = api.extract(data);
-
-                    if (musicUrl) {
-                        playWhenReady(audio, musicUrl, () => {
-                            console.warn('音乐链接播放失败，尝试下一个API');
-                            loadAndPlayMusic(tries - 1);
-                        });
-                    } else {
-                        console.warn('API返回数据中无音乐链接，重试剩余尝试');
-                        loadAndPlayMusic(tries - 1);
-                    }
-                } catch (error) {
-                    console.warn('API请求失败，重试剩余尝试');
-                    loadAndPlayMusic(tries - 1);
-                }
-            }
-
-            loadAndPlayMusic();
-
-            const playLink = document.getElementById('play-music-link');
-            if (playLink) {
-                playLink.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    loadAndPlayMusic();
-                });
             }
         })();
     </script>
