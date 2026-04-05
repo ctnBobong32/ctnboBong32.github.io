@@ -16,13 +16,12 @@
 body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;background:#0f1115;color:#fff}
 .clear a{text-decoration:none;color:inherit;display:block}
 .clear.col-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0;padding:0}
-.find .item{position:relative;overflow:hidden;border-radius:12px;cursor:pointer;height:80px;display:flex;align-items:center;justify-content:center}
-.find .item .bg{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;background:var(--icon) center/32px no-repeat, #28a9e0;border-radius:12px;transition:transform .3s}
+.find .item{position:relative;overflow:hidden;border-radius:12px;cursor:pointer;height:100px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px}
+.find .item .bg{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;background:var(--icon) center/contain no-repeat,#28a9e0;border-radius:12px;transition:transform .3s}
 .find .item .inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:4px 6px;word-break:break-word}
 .find .item .inner span{font-weight:600;font-size:14px}
-.find .item .inner p{display:none;margin-top:4px;font-size:12px;color:#fff;line-height:1.3;text-align:center}
-.find .item:hover .inner p{display:block}
-@media(max-width:600px){.clear.col-3{grid-template-columns:repeat(3,1fr);gap:8px}.find .item{height:70px}.find .item .inner span{font-size:13px}.find .item .inner p{font-size:11px}}
+.find .item .inner p{margin-top:4px;font-size:12px;line-height:1.3;text-align:center;color:#fff}
+@media(max-width:600px){.clear.col-3{grid-template-columns:repeat(3,1fr);gap:8px}.find .item{height:100px}.find .item .inner span{font-size:13px}.find .item .inner p{font-size:11px}}
 </style>
 </head>
 <body oncontextmenu="return false">
@@ -58,9 +57,6 @@ body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang 
         <p>热爱开源，经常在GitHub上翻项目。</p>
         <p>专注于手机端运行Java版Minecraft渲染器编译测试。</p>
         <p>希望能与你在方块世界相见！</p>
-        <div class="chatbox">
-          <div class="line loading"><span></span><span></span><span></span></div>
-        </div>
       </div>
     </div>
   </div>
