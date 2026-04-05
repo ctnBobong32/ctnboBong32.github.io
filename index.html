@@ -6,21 +6,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CTN的网站 - CTN</title>
 <link rel="shortcut icon" href="/images/favicon.png">
-<link rel="stylesheet" href="css/h.9c69ed6c.css">
-<link rel="stylesheet" href="css/nekotora.99cf6f8c.css">
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/toastr.css">
-<link rel="stylesheet" href="css/toastr.min.css">
-<script src="js/toastr.min.js"></script>
 <style>
 body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;background:#0f1115;color:#fff}
 .clear a{text-decoration:none;color:inherit;display:block}
 .clear.col-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0;padding:0}
 .find .item{position:relative;overflow:hidden;border-radius:12px;cursor:pointer;height:100px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px}
 .find .item .bg{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;background:var(--icon) center/contain no-repeat,#28a9e0;border-radius:12px;transition:transform .3s}
-.find .item .inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:4px 6px;word-break:break-word}
+.find .item .inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:4px 6px;word-wrap:break-word}
 .find .item .inner span{font-weight:600;font-size:14px}
-.find .item .inner p{margin-top:4px;font-size:12px;line-height:1.3;text-align:center;color:#fff}
+.find .item .inner p{margin-top:4px;font-size:11px;line-height:1.2;text-align:center;color:#fff;word-break:break-word}
 @media(max-width:600px){.clear.col-3{grid-template-columns:repeat(3,1fr);gap:8px}.find .item{height:100px}.find .item .inner span{font-size:13px}.find .item .inner p{font-size:11px}}
 </style>
 </head>
@@ -34,35 +28,8 @@ body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang 
 <a href="//music.262832.xyz">免费音乐</a>
 </nav>
 
-<div class="background"><canvas id="startrack"></canvas><div class="cover"></div></div>
-
 <div class="main">
 
-<div class="ch intro">
-  <div class="container">
-    <div class="hello">
-      <h1 id="slogan">思考中...</h1>
-      <h2><div class="circle"><span></span><span></span><span></span></div>CTN个人网站</h2>
-    </div>
-  </div>
-</div>
-
-<div class="ch about">
-  <div class="container">
-    <h2 class="chtitle">Who is <span>CTN</span>？</h2>
-    <div class="clear">
-      <div class="introduct">
-        <img class="avatar" src="images/ctn.png">
-        <p>你好，我是CTN，15岁，是学生。</p>
-        <p>热爱开源，经常在GitHub上翻项目。</p>
-        <p>专注于手机端运行Java版Minecraft渲染器编译测试。</p>
-        <p>希望能与你在方块世界相见！</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- 活跃平台 -->
 <div class="find ch">
   <div class="container links">
     <h2 class="chtitle">CTN活跃的<span>平台</span></h2>
@@ -73,7 +40,7 @@ body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang 
           <div class="bg"></div>
           <div class="inner">
             <span>QQ</span>
-            <p>日常交流与群组联系</p>
+            <p>聊天、群组与社交</p>
           </div>
         </div>
       </a>
@@ -83,7 +50,7 @@ body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang 
           <div class="bg"></div>
           <div class="inner">
             <span>Bilibili</span>
-            <p>视频分享与创作平台</p>
+            <p>二次元视频分享</p>
           </div>
         </div>
       </a>
@@ -93,7 +60,7 @@ body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang 
           <div class="bg"></div>
           <div class="inner">
             <span>Github</span>
-            <p>开源项目与代码托管</p>
+            <p>开源项目代码托管</p>
           </div>
         </div>
       </a>
@@ -103,7 +70,7 @@ body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang 
           <div class="bg"></div>
           <div class="inner">
             <span>Discord</span>
-            <p>社区交流与服务器</p>
+            <p>社区交流与聊天</p>
           </div>
         </div>
       </a>
@@ -113,7 +80,7 @@ body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang 
           <div class="bg"></div>
           <div class="inner">
             <span>X</span>
-            <p>动态分享与资讯平台</p>
+            <p>社交动态分享</p>
           </div>
         </div>
       </a>
@@ -123,17 +90,7 @@ body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang 
           <div class="bg"></div>
           <div class="inner">
             <span>Telegram</span>
-            <p>即时通讯与频道订阅</p>
-          </div>
-        </div>
-      </a>
-
-      <a href="https://youtube.com/@ctnbobong32" target="_blank">
-        <div class="item" style="--icon:url('https://favicon.im/youtube.com')">
-          <div class="bg"></div>
-          <div class="inner">
-            <span>YouTube</span>
-            <p>全球视频平台</p>
+            <p>即时通讯和频道</p>
           </div>
         </div>
       </a>
@@ -142,24 +99,12 @@ body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang 
   </div>
 </div>
 
-<div class="footer ch">
-  <div class="container">
-    <h3>CTN的网站</h3>
-    <p>互联网的尽头，新世界的起点</p>
-    <p><a href="#" id="play-music-link">播放音乐</a></p>
-  </div>
 </div>
 
-<audio id="bg-music"></audio>
-
 <script>
-(function(){const audio=document.getElementById('bg-music');const apis=[{url:'https://api.52vmy.cn/api/music/wy/rand',extract:d=>d.data?.Music},{url:'https://api-v2.cenguigui.cn/api/netease/',extract:d=>d.data?.play_url},{url:'https://api.zxki.cn/api/wyyrg',extract:d=>d.data?.url}];function play(url){audio.src=url;audio.play().catch(()=>{});}async function load(){const api=apis[Math.floor(Math.random()*apis.length)];try{const r=await fetch(api.url);const j=await r.json();const u=api.extract(j);if(u)play(u);}catch(e){}}document.getElementById('play-music-link').onclick=function(e){e.preventDefault();load();};setTimeout(load,800);})();
 document.onkeydown=function(e){if(e.keyCode==123)return false;if(e.ctrlKey&&e.shiftKey&&e.keyCode==73)return false;if(e.ctrlKey&&e.keyCode==85)return false;};
 setInterval(function(){Function('debugger')();},3000);
 console.log=console.warn=console.error=function(){};
 </script>
-<script src="js/page.3a0791a3.js"></script>
-<script src="js/stats.js"></script>
-
 </body>
 </html>
