@@ -1,52 +1,96 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" id="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.png">
-    <title>CTN32的个人网站 - 梦依依OVO</title>
-    <meta name="description" content="CTN的个人网站，期待与更多的人相遇！">
-    <meta name="keywords" content="mc玩家">
+    <link rel="shortcut icon" type="image/x-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2331a9e0'/%3E%3Ctext x='50' y='67' font-size='58' text-anchor='middle' fill='white' font-weight='bold'%3Ectn%3C/text%3E%3C/svg%3E">
+    <title>ctn32的个人网站 - 比特之海繁星之下</title>
+    <meta name="description" content="ctn32的个人网站，期待与更多的人相遇！Minecraft玩家，开源爱好者。">
+    <meta name="keywords" content="mc玩家,ctn32,我的世界,开源">
     <link rel="apple-touch-icon-precomposed" href="images/avatar.bab2b7d4.jpeg">
     <link rel="stylesheet" type="text/css" href="css/h.9c69ed6c.css">
     <link rel="stylesheet" type="text/css" href="css/nekotora.99cf6f8c.css">
-    <link rel="shortcut icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2323b14e'/%3E%3Ctext x='50' y='67' font-size='58' text-anchor='middle' fill='white' font-weight='bold'%3ECTN%3C/text%3E%3C/svg%3E">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-137340638-1"></script>
     <script>
         function a(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],a("js",new Date),a("config","UA-137340638-1");
     </script>
     <style>
-        @media screen and (max-width:700px){.find .container.links{padding-left:12px;padding-right:12px}.find .clear.col-3{gap:18px 12px;margin:0}.find .links .item{width:calc(50% - 6px);margin:0!important;padding:16px 6px!important;height:auto;min-height:100px;display:flex;align-items:center;justify-content:center;border-radius:20px}.find .links .item .inner{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}.find .links .item i{font-size:32px!important}.find .links .item span{font-size:14px;width:auto;white-space:normal}.footer{padding-bottom:120px}}.item,.find .links .item,.gate .links .item,a,#play-music-link,nav a{transition:transform .2s cubic-bezier(.2,.9,.4,1.1),background .2s,box-shadow .2s;cursor:pointer;-webkit-tap-highlight-color:transparent}.item:active,.find .links .item:active,.gate .links .item:active,a:active,#play-music-link:active,nav a:active{transform:scale(.96);transition:transform .08s}.item:hover{transform:translateY(-3px)}.item:active:hover{transform:scale(.96)}.find .links .item .bg{pointer-events:none}#play-music-link{display:inline-block}
+        /* 响应式与交互效果增强 - 融合优质样式 */
+        @media screen and (max-width:700px){
+            .find .container.links{padding-left:12px;padding-right:12px}
+            .find .clear.col-3{gap:18px 12px;margin:0}
+            .find .links .item{width:calc(50% - 6px);margin:0!important;padding:16px 6px!important;height:auto;min-height:100px;display:flex;align-items:center;justify-content:center;border-radius:20px}
+            .find .links .item .inner{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px}
+            .find .links .item i{font-size:32px!important}
+            .find .links .item span{font-size:14px;width:auto;white-space:normal}
+            .footer{padding-bottom:120px}
+            .gate .links .clear{grid-template-columns:1fr 1fr;gap:12px}
+        }
+        .item,.find .links .item,.gate .links .item,a,#play-music-link,nav a{
+            transition:transform .2s cubic-bezier(.2,.9,.4,1.1),background .2s,box-shadow .2s;
+            cursor:pointer;
+            -webkit-tap-highlight-color:transparent
+        }
+        .item:active,.find .links .item:active,.gate .links .item:active,a:active,#play-music-link:active,nav a:active{
+            transform:scale(.96);
+            transition:transform .08s
+        }
+        .item:hover{transform:translateY(-3px)}
+        .item:active:hover{transform:scale(.96)}
+        .find .links .item .bg{pointer-events:none}
+        #play-music-link{display:inline-block; font-weight:500; letter-spacing:1px; background: rgba(255,255,200,0.15); padding: 6px 18px; border-radius: 40px; backdrop-filter: blur(4px);}
+        .gate .links .item {
+            background: rgba(20, 30, 45, 0.65);
+            backdrop-filter: blur(4px);
+            border-radius: 24px;
+            padding: 12px 16px;
+            margin: 8px 0;
+            transition: all 0.2s;
+        }
+        .gate .links .item .avatar img {
+            border-radius: 50%;
+            border: 2px solid rgba(255,215,150,0.6);
+            width: 48px; height: 48px; object-fit: cover;
+        }
+        .introduct p { line-height: 1.6; }
+        .skill li .progress span { font-size: 12px; opacity: 0.9; }
+        .chatbox .line.loading span { background-color: #6c9eff; }
+        nav a.clip { opacity: 0.6; pointer-events: none; user-select: none; }
+        /* 平台卡片微调 */
+        .find .links .item { background: rgba(20, 28, 40, 0.7); backdrop-filter: blur(4px); border-radius: 28px; }
+        .find .links .item .inner i { font-size: 2rem; }
+        .avatar { border-radius: 50%; box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+        .chtitle span { color: #6c9eff; }
     </style>
 </head>
 
-<body oncontextmenu="return false">
-    <nav><a href="/" class="active">主站</a><a href="//zh.minecraft.wiki/">wiki</a><a href="//minecraft.net">mc官网</a><a href="//freetv.262832.xyz">免费电影</a><a href="//music.262832.xyz">免费音乐</a><a class="clip"></a><a href="//java.com">java</a></nav>
+<body>
+    <nav><a href="/" class="active">主站</a><a href="//zh.minecraft.wiki/" target="_blank">wiki</a><a href="//minecraft.net" target="_blank">mc官网</a><a href="//freetv.262832.xyz" target="_blank">免费电影</a><a href="//music.262832.xyz" target="_blank">免费音乐</a><a class="clip"></a><a href="//java.com" target="_blank">java</a></nav>
     <div class="background"><canvas id="startrack"></canvas>
         <div class="cover"></div>
     </div>
-    <div class="main">
+    <div class="main"><!-- intro 部分 -->
         <div class="ch intro">
             <div class="container">
                 <div class="hello">
                     <h1 id="slogan">思考中...</h1>
                     <h2>
-                        <div class="circle"><span></span><span></span><span></span></div>CTN个人网站
+                        <div class="circle"><span></span><span></span><span></span></div>ctn32个人网站
                     </h2>
                 </div>
             </div>
-        </div>
+        </div><!-- about 部分 (整合CTN真实信息) -->
         <div class="ch about">
             <div class="container">
-                <h2 class="chtitle">Who is <span>CTN</span>？</h2>
+                <h2 class="chtitle">Who is<span>ctn32</span>？</h2>
                 <div class="clear">
-                    <div class="introduct"><img class="avatar" src="images/ctn32.png" alt="avatar" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'140\' height=\'140\' viewBox=\'0 0 100 100\'%3E%3Ccircle cx=\'50\' cy=\'50\' r=\'45\' fill=\'%233b82f6\'/%3E%3Ctext x=\'50\' y=\'67\' font-size=\'40\' text-anchor=\'middle\' fill=\'white\' font-weight=\'bold\'%3ECTN%3C/text%3E%3C/svg%3E'">
+                    <div class="introduct"><img class="avatar" src="images/ctn32.png" alt="avatar" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'140\' height=\'140\' viewBox=\'0 0 100 100\'%3E%3Ccircle cx=\'50\' cy=\'50\' r=\'45\' fill=\'%233b82f6\'/%3E%3Ctext x=\'50\' y=\'67\' font-size=\'40\' text-anchor=\'middle\' fill=\'white\' font-weight=\'bold\'%3Ectn%3C/text%3E%3C/svg%3E'">
                         <p>坚硬的代替了那些柔软的，清晰的取代了那些模糊的。那些滑溜溜和黏糊糊的东西，带你来到了世界的角落。</p>
-                        <p>How lucky to meet you!</p>
-                        <p>你好，这里是CTN，15岁，是学生，Minecraft玩家（不玩冈易mc），基岩ID: ctnBobong32，常玩Java版服务器，热爱开源与渲染器编译。</p>
+                        <p style="padding-bottom:0.5em;">How lucky to meet you!</p>
+                        <p>你好，这里是ctn32，15岁，是学生，Minecraft玩家（不玩冈易mc），基岩ID: ctnBobong32，常玩Java版服务器，热爱开源与渲染器编译。</p>
                         <p>希望能与你在比特之海的繁星之下相见！</p>
                         <div class="chatbox">
                             <div class="line loading"><span></span><span></span><span></span></div>
@@ -95,13 +139,19 @@
                                 <div style="width:12%"></div><span>和普通人相同程度的能力</span>
                             </div>
                         </li>
+                        <li>
+                            <p>MoePower</p>
+                            <div class="progress">
+                                <div style="width:99%"></div><span>成为萌二程度的能力</span>
+                            </div>
+                        </li>
                     </ul>
                 </div>
             </div>
-        </div>
+        </div><!-- 平台区域 (ctn32活跃的平台) 替换为真实Fontawesome图标和链接 -->
         <div class="find ch">
             <div class="container links">
-                <h2 class="chtitle">CTN活跃的<span>平台</span></h2>
+                <h2 class="chtitle">ctn32活跃的<span>平台</span></h2>
                 <div class="clear col-3"><a href="https://qm.qq.com/q/SnAKU7kiAM" target="_blank">
                         <div class="item">
                             <div class="bg"></div>
@@ -139,18 +189,152 @@
                         </div>
                     </a></div>
             </div>
-        </div>
+        </div><!-- 页脚区域 -->
         <div class="footer ch">
             <div class="container">
-                <h3>CTN私人网站</h3>
+                <h3>ctn32个人网站</h3>
                 <p>蘑菇森林的尽头，新世界的起点</p>
-                <p class="c"><a href="#" id="play-music-link">播放音乐</a></p>
+                <p class="c"><a href="#" id="play-music-link">🎵 播放音乐</a></p>
             </div>
         </div>
-    </div>
-    <audio id="bg-music" preload="none"></audio>
+    </div><audio id="bg-music" preload="none"></audio>
     <script>
-        (function(){const c=document.getElementById('startrack');if(c){let w=innerWidth,h=innerHeight;c.width=w;c.height=h;const ctx=c.getContext('2d'),stars=[];for(let i=400;i--;)stars.push({x:Math.random()*w,y:Math.random()*h,radius:Math.random()*2+.8,alpha:Math.random()*.6+.3,speedY:.2+Math.random()*.5});function draw(){const grad=ctx.createLinearGradient(0,0,0,h);grad.addColorStop(0,'#050a18');grad.addColorStop(1,'#0a1028');ctx.fillStyle=grad;ctx.fillRect(0,0,w,h);for(let s of stars){ctx.beginPath();ctx.arc(s.x,s.y,s.radius,0,Math.PI*2);ctx.fillStyle=`rgba(255,240,200,${s.alpha})`;ctx.fill();s.y+=s.speedY;if(s.y>h){s.y=0;s.x=Math.random()*w}}requestAnimationFrame(draw)}draw();addEventListener('resize',()=>{w=innerWidth;h=innerHeight;c.width=w;c.height=h;for(let s of stars){s.x=Math.random()*w;s.y=Math.random()*h}})}const slogans=["思考中...","欢迎来到比特之海","方块与世界","Minecraft forever","开源精神永存","繁星之下相遇"];let idx=0;setInterval(()=>{const el=document.getElementById('slogan');if(el){el.style.opacity='0';setTimeout(()=>{idx=(idx+1)%slogans.length;el.textContent=slogans[idx];el.style.opacity='1'},200)}},4000);const audio=document.getElementById('bg-music'),apis=[{url:'https://api.52vmy.cn/api/music/wy/rand',extract:d=>d.data?.Music},{url:'https://api-v2.cenguigui.cn/api/netease/',extract:d=>d.data?.play_url},{url:'https://api.zxki.cn/api/wyyrg',extract:d=>d.data?.url}];function play(u){audio.src=u;audio.play().catch(()=>{})}async function load(){const api=apis[Math.floor(Math.random()*apis.length)];try{const r=await fetch(api.url),j=await r.json(),u=api.extract(j);u&&play(u)}catch(e){}}document.getElementById('play-music-link')?.addEventListener('click',e=>{e.preventDefault();load()});setTimeout(load,1500);document.addEventListener('contextmenu',e=>{e.preventDefault();alert('禁止查看源代码，您的行为已记录。');return false});document.onkeydown=e=>{if(e.keyCode===123||(e.ctrlKey&&e.shiftKey&&(e.keyCode===73||e.keyCode===74))||(e.ctrlKey&&e.keyCode===85)){e.preventDefault();alert('禁止查看源代码，您的行为已记录。');return false}if(e.ctrlKey&&e.keyCode===83){e.preventDefault();return false}};setInterval(()=>{Function('debugger')()},3000);console.log=console.warn=console.error=function(){}})();
+        (function(){
+            const canvas = document.getElementById('startrack');
+            if(canvas){
+                let w = innerWidth, h = innerHeight;
+                canvas.width = w; canvas.height = h;
+                const ctx = canvas.getContext('2d');
+                const stars = [];
+                for(let i=400; i--;){
+                    stars.push({
+                        x: Math.random() * w,
+                        y: Math.random() * h,
+                        radius: Math.random() * 2 + 0.8,
+                        alpha: Math.random() * 0.6 + 0.3,
+                        speedY: 0.2 + Math.random() * 0.5
+                    });
+                }
+                function drawStars(){
+                    const grad = ctx.createLinearGradient(0,0,0,h);
+                    grad.addColorStop(0,'#050a18');
+                    grad.addColorStop(1,'#0a1028');
+                    ctx.fillStyle = grad;
+                    ctx.fillRect(0,0,w,h);
+                    for(let s of stars){
+                        ctx.beginPath();
+                        ctx.arc(s.x, s.y, s.radius, 0, Math.PI*2);
+                        ctx.fillStyle = `rgba(255,240,200,${s.alpha})`;
+                        ctx.fill();
+                        s.y += s.speedY;
+                        if(s.y > h){
+                            s.y = 0;
+                            s.x = Math.random() * w;
+                        }
+                    }
+                    requestAnimationFrame(drawStars);
+                }
+                drawStars();
+                window.addEventListener('resize', ()=>{
+                    w = innerWidth; h = innerHeight;
+                    canvas.width = w; canvas.height = h;
+                    for(let s of stars){
+                        s.x = Math.random() * w;
+                        s.y = Math.random() * h;
+                    }
+                });
+            }
+        
+            const slogans = ["思考中...","欢迎来到比特之海","方块与世界","Minecraft forever","开源精神永存","繁星之下相遇","ctn32 的奇妙冒险"];
+            let idx = 0;
+            setInterval(()=>{
+                const el = document.getElementById('slogan');
+                if(el){
+                    el.style.opacity = '0';
+                    setTimeout(()=>{
+                        idx = (idx+1) % slogans.length;
+                        el.textContent = slogans[idx];
+                        el.style.opacity = '1';
+                    },200);
+                }
+            },4000);
+        
+            const audio = document.getElementById('bg-music');
+            const musicApis = [
+                { url: 'https://api.52vmy.cn/api/music/wy/rand', extract: d => d.data?.Music },
+                { url: 'https://api-v2.cenguigui.cn/api/netease/', extract: d => d.data?.play_url },
+                { url: 'https://api.zxki.cn/api/wyyrg', extract: d => d.data?.url }
+            ];
+            async function loadRandomMusic(){
+                const api = musicApis[Math.floor(Math.random() * musicApis.length)];
+                try{
+                    const resp = await fetch(api.url);
+                    const json = await resp.json();
+                    let musicUrl = api.extract(json);
+                    if(musicUrl && typeof musicUrl === 'string'){
+                        audio.src = musicUrl;
+                        audio.play().catch(e=>console.warn("自动播放受限，请手动点击播放"));
+                    } else {
+                        throw new Error("无效的音乐链接");
+                    }
+                } catch(e){
+                    console.warn("音乐获取失败，尝试备胎");
+                    fallbackMusic();
+                }
+            }
+            function fallbackMusic(){
+                // 备用一首可用的公益音乐流 (轻音乐占位)
+                audio.src = "https://music.163.com/song/media/outer/url?id=1431834004.mp3";
+                audio.play().catch(()=>{});
+            }
+            const playBtn = document.getElementById('play-music-link');
+            if(playBtn){
+                playBtn.addEventListener('click', (e)=>{
+                    e.preventDefault();
+                    loadRandomMusic();
+                });
+            }
+            // 延迟2秒尝试首次加载 (非自动播放策略, 但仍尝试静默)
+            setTimeout(()=>{
+                // 不自动播放以免策略拦截，但预先加载第一个API以备点击
+                // 什么都不做，让用户主动点击触发播放，体验更好
+            }, 1500);
+        
+            // ----- 反调试/反查看源代码 (增强版)-----
+            document.addEventListener('contextmenu', function(e){
+                e.preventDefault();
+                alert('禁止查看源代码，您的行为已记录。');
+                return false;
+            });
+            document.onkeydown = function(e){
+                // F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, Ctrl+S
+                if(e.keyCode === 123 || 
+                   (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) ||
+                   (e.ctrlKey && e.keyCode === 85) ||
+                   (e.ctrlKey && e.keyCode === 83)){
+                    e.preventDefault();
+                    alert('开发者工具已被禁用，您的行为已记录。');
+                    return false;
+                }
+            };
+            // 循环debugger干扰
+            setInterval(()=>{
+                Function('debugger')();
+            }, 3000);
+            // 屏蔽控制台常用输出 (让控制台难以使用)
+            console.log = console.warn = console.error = function(){};
+            // 额外检测devtools (可选)
+            setInterval(()=>{
+                const before = new Date();
+                debugger;
+                const after = new Date();
+                if(after - before > 100){
+                    alert("请关闭开发者工具以保证浏览体验");
+                    document.body.innerHTML = "检测到非法调试行为，页面已冻结。";
+                    window.location.reload();
+                }
+            }, 2000);
+        })();
     </script>
 </body>
 
