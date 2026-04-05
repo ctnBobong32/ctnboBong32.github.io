@@ -1,181 +1,244 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
+
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=Edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CTN的网站 - CTN</title>
-<link rel="shortcut icon" href="/images/favicon.png">
-<link rel="stylesheet" type="text/css" href="css/h.9c69ed6c.css">
-<link rel="stylesheet" type="text/css" href="css/nekotora.99cf6f8c.css">
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-137340638-1"></script>
-<style>
-body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;background:#0f1115;color:#fff}
-.clear a{text-decoration:none;color:inherit;display:block}
-.clear.col-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:0;padding:0}
-.find .item{position:relative;overflow:hidden;border-radius:12px;cursor:pointer;height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px;transition:transform .3s}
-.find .item:hover{transform:scale(1.05)}
-.find .item .bg{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;background-size:contain;background-position:center;background-repeat:no-repeat;border-radius:12px}
-.find .item .inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:4px 6px;word-break:break-word}
-.find .item .inner span{font-weight:600;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;width:100%}
-.find .item .inner p{margin-top:4px;font-size:11px;line-height:1.2;text-align:center;color:#fff;word-break:break-word}
-@media(max-width:600px){.clear.col-3{grid-template-columns:repeat(3,1fr);gap:8px}.find .item{height:110px}.find .item .inner span{font-size:13px}.find .item .inner p{font-size:10px}}
-</style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=yes">
+    <title>CTN的方块世界 | 个人网站</title>
+    <link rel="shortcut icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2323b14e'/%3E%3Ctext x='50' y='67' font-size='58' text-anchor='middle' fill='white' font-weight='bold'%3ECTN%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        *{padding:0;margin:0;transition-timing-function:cubic-bezier(.19,1,.22,1)}body,html{font-family:'Microsoft YaHei',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;-webkit-font-smoothing:antialiased;color:#fff;line-height:1.5;min-width:1150px;background-color:#212121;font-size:14px;overflow-x:hidden}.intro{position:relative}.clear:after{content:"";display:block;height:0;visibility:hidden;clear:both}.chatbox>.line{display:none}#startrack{height:100%;width:100%;position:absolute;top:0;left:0}.background.fixed{position:fixed;top:-60%}.background{position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:-2;overflow:hidden}.background .cover{position:absolute;bottom:-42%;left:0;height:100%;width:100%;background:linear-gradient(0deg,#202020 30%,rgba(32,32,32,0));pointer-events:none;z-index:-1}@keyframes bg{0%{transform:rotate(0);border-radius:0}50%{transform:rotate(180deg);border-radius:0}to{transform:rotate(360deg);border-radius:0}}nav{position:fixed;left:20px;bottom:0;z-index:2333;transform:rotate(-90deg) translateZ(0);transform-origin:0 0;transition:all .3s ease-out;vertical-align:middle;font-family:Roboto,Tahoma,Consolas,'Microsoft YaHei'}nav a.clip{height:3px;width:3px;background:#fff;border-radius:100%;display:inline-block;margin:0 10px}nav a{display:inline-block;font-size:13px;color:#fff;text-decoration:none;margin:0 10px;opacity:.4;transition:all .3s;vertical-align:middle}nav a.time{opacity:1}nav a.active,nav a:hover{text-decoration:underline;opacity:1}.ch{width:100%;padding:80px 0;animation:fadedown 1s cubic-bezier(.19,1,.22,1)}.ch h2.chtitle{padding-bottom:30px;font-size:26px;letter-spacing:.2em;color:hsla(0,0%,100%,.5)}.ch h2.chtitle span{color:#fff}.ch h2.chtitle:after{content:"";display:block;width:10%;height:5px;background-color:hsla(0,0%,100%,.5);margin-top:30px}@keyframes fadedown{0%{opacity:0;transform:translateY(-50px)}to{opacity:1;transform:translateY(0)}}.container{position:relative;width:1000px;margin:0 auto;height:100%;padding:20px 0}.intro{color:#fff;height:100vh;padding:0}.intro .container{animation:fadedown 3.5s cubic-bezier(.19,1,.22,1)}.hello{position:absolute;bottom:20%;left:0}.hello h1,.hello h2{font-weight:400;font-size:22px;line-height:1.5em;letter-spacing:.2em}.hello h1{font-size:42px;letter-spacing:.5em}.hello h2{padding-top:.6em}.hello .circle{float:left;margin-right:10px;letter-spacing:0}.hello .circle span{display:inline-block;width:13px;height:13px;background-color:#fff;border-radius:100%;margin-right:5px}.hello .circle span:first-child{background-color:#ff493f}.hello .circle span:nth-child(2){background-color:#f7c900}.hello .circle span:nth-child(3){background-color:#00ff37}.about .introduct{line-height:2em}.about .introduct img.avatar{float:right;width:140px;margin-left:40px;margin-right:20px;border-radius:100%}.about ul.skill{margin-top:50px}.about ul.skill li{list-style:none;padding:10px 0;width:45%;float:left;margin-right:5%}.about ul.skill li p{display:inline-block;width:26%;margin-right:3%;font-size:12px}.about ul.skill li .progress{display:inline-block;width:70%;height:3px;background-color:hsla(0,0%,100%,.2);vertical-align:middle}.about ul.skill li .progress span{font-size:12px;color:hsla(0,0%,100%,.4);opacity:0;position:relative;top:-5px;letter-spacing:.5em;transition:all .3s}.about ul.skill li:hover .progress span{opacity:1;top:0}.about ul.skill li .progress div{background-color:#fff;height:3px;position:relative}ul.skill li .progress div{animation:progressin 7s}@keyframes progressin{0%{width:0}}.about ul.skill li .progress div:after{content:"";display:inline-block;position:absolute;right:-4px;top:-8px;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:3px solid #fff}.links a{color:#fff;text-decoration:none}.find .links .item{position:relative;width:17.6%;height:80px;line-height:80px;margin:10px 1.2%;padding:5px 0;text-align:center;float:left;transition:all .2s;opacity:.9}.find .links .item:hover{opacity:1;transform:translateY(-10px)}.find .links .item .inner{position:relative;z-index:5}.find .links .item .bg{position:absolute;bottom:0;left:0;width:100%;height:1.8%;z-index:0;transition:all .15s}.find .links .item:hover .bg{height:100%;width:100%;border-radius:5px;box-shadow:0 3px 20px rgba(0,0,0,.28)}.find .links .item i{font-size:20px}.find .links .item span{display:inline-block;width:100px}.find .links .col-3 .item{width:30.93%;margin:10px 1.2%}.gate .links .item{margin:5px 0;padding:15px 1.5%;float:left;width:22%;height:60px;transition:all .2s;opacity:.85}.gate .links .item.akarin{opacity:.58}.gate .links .item:hover{opacity:1;border-radius:5px;background-color:hsla(0,0%,100%,.25);transform:translateY(-5px);box-shadow:0 3px 20px rgba(0,0,0,.28)}.gate .links .item .avatar{float:left;height:60px;line-height:60px;width:60px;border-radius:100%;text-align:center;margin-right:15px;background-color:#353535;overflow:hidden}.gate .links .item .avatar i{font-size:24px}.gate .links .item .avatar img{height:60px;max-width:60px;border-radius:100%}.gate .links .item .inner{padding:6px}.gate .links .item .inner h5{font-weight:400;font-size:17px}.gate .links .item .inner p{font-size:13px;color:hsla(0,0%,100%,.6)}.footer{text-align:center}.footer a{color:inherit;text-decoration:none}.footer a:hover{text-decoration:underline}.footer h3{font-weight:400;font-size:20px;letter-spacing:.8em;margin:6px 0}.footer p{font-size:12px;letter-spacing:1em;opacity:.3}.footer p.c{margin-top:20px;letter-spacing:.1em}.chatbox .line{margin:40px 0}.chatbox .line p{margin:10px 0}.chatbox .question a{display:inline-block;background-color:hsla(0,0%,100%,.3);border-radius:10px 10px 10px 0;font-size:12px;padding:0 10px;margin-right:10px;cursor:pointer;opacity:.8;transform:translateY(0);transition:all .2s}.chatbox .question a:hover{opacity:1;transform:translateY(-2px)}.chatbox .question.disable a{opacity:.3}.chatbox .question.disable a.selected{opacity:.9}.chatbox .question a.error{opacity:.3;animation:error .2s ease-in-out}.chatbox .loading span{display:inline-block;height:10px;width:10px;border-radius:100%;background-color:#fff;margin-right:5px;animation:loading-point 1.4s ease-in-out infinite both}.chatbox .loading span:first-child{animation-delay:.2s}.chatbox .loading span:nth-child(2){animation-delay:.4s}.chatbox .loading span:nth-child(3){animation-delay:.6s}@keyframes loading-point{0%{opacity:.8}50%{opacity:.25}to{opacity:1}}@keyframes error{0%{transform:translateX(0)}25%{transform:translateX(-2px)}50%{transform:translateX(0)}75%{transform:translateX(2px)}to{transform:translateX(0)}}@media screen and (min-width:1400px){.container{width:70%}nav a{font-size:18px}}@media screen and (max-width:700px){body,html{min-width:0}.container{width:auto;margin:0 5%}div.el span{display:block;width:60%;left:0;top:75px;margin:-40% auto 0}nav{padding:15px 5%;overflow:auto;font-size:13px;left:0;top:inherit;bottom:0;transform:rotate(0) translateZ(0);transform-origin:0 100%;white-space:nowrap;width:90%;background:linear-gradient(180deg,transparent,rgba(0,0,0,.8))}.ch{padding:40px 0}.hello{width:90%;padding:5%;text-align:center;bottom:50%}.hello .circle{float:none;margin-right:0}.hello h2{padding-top:0}.hello h1,.hello h2{font-size:14px}.hello .circle{padding:20px}.hello .circle span{margin:0 5px;width:10px;height:10px}.hello h1{font-size:26px}.about .introduct img.avatar{float:none;margin-left:0;margin-right:0;width:100px}.about .introduct,.about .skill{float:none;width:auto}.about .skill{padding-top:40px}.about ul.skill li{width:100%}.find .links .item,.gate .links .item{width:46%;height:auto;padding:5px 0;margin:10px 2%}.find .links .item{height:60px;line-height:60px;font-size:13px}.gate .links .item .avatar{height:40px;line-height:40px;width:40px}.gate .links .item .avatar img{height:40px;max-width:40px}.gate .links .item .inner{padding:0}.gate .links .item .inner h5{font-size:15px}.gate .links .item .inner h5,.gate .links .item .inner p{white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.footer{padding-bottom:100px}.footer h3,.footer p{letter-spacing:.2em}}
+    </style>
 </head>
+
 <body oncontextmenu="return false">
-
-<nav>
-<a href="/" class="active">主站</a>
-<a href="//zh.minecraft.wiki/">wiki</a>
-<a href="//minecraft.net">mc官网</a>
-<a href="//freetv.262832.xyz">免费电影</a>
-<a href="//music.262832.xyz">免费音乐</a>
-</nav>
-
-<div class="main">
-
-<div class="ch intro">
-  <div class="container">
-    <div class="hello">
-      <h1 id="slogan">思考中...</h1>
-      <h2><div class="circle"><span></span><span></span><span></span></div>CTN个人网站</h2>
+    <nav><a href="/" class="active">主站</a><a href="//zh.minecraft.wiki/">wiki</a><a href="//minecraft.net">mc官网</a><a href="//freetv.262832.xyz">免费电影</a><a href="//music.262832.xyz">免费音乐</a><a class="clip"></a><a href="//java.com">java</a></nav>
+    <div class="background"><canvas id="startrack"></canvas>
+        <div class="cover"></div>
     </div>
-  </div>
-</div>
-
-<div class="ch about">
-  <div class="container">
-    <h2 class="chtitle">Who is <span>CTN</span>？</h2>
-    <div class="clear">
-      <div class="introduct">
-        <img class="avatar" src="images/ctn.png">
-        <p>你好，我是CTN，15岁，是学生。</p>
-        <p>热爱开源，经常在GitHub上翻项目。</p>
-        <p>专注于手机端运行Java版Minecraft渲染器编译测试。</p>
-        <p>希望能与你在方块世界相见！</p>
-      </div>
+    <div class="main">
+        <div class="ch intro">
+            <div class="container">
+                <div class="hello">
+                    <h1 id="slogan">思考中...</h1>
+                    <h2>
+                        <div class="circle"><span></span><span></span><span></span></div>CTN个人网站
+                    </h2>
+                </div>
+            </div>
+        </div>
+        <div class="ch about">
+            <div class="container">
+                <h2 class="chtitle">Who is <span>CTN</span>？</h2>
+                <div class="clear">
+                    <div class="introduct"><img class="avatar" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%233b82f6'/%3E%3Ctext x='50' y='67' font-size='40' text-anchor='middle' fill='white' font-weight='bold'%3ECTN%3C/text%3E%3C/svg%3E" alt="avatar">
+                        <p>坚硬的代替了那些柔软的，清晰的取代了那些模糊的。那些滑溜溜和黏糊糊的东西，带你来到了世界的角落。</p>
+                        <p>How lucky to meet you!</p>
+                        <p>你好，这里是CTN，15岁，是学生，Minecraft玩家（不玩冈易mc），基岩ID: ctnBobong32，常玩Java版服务器，热爱开源与渲染器编译。</p>
+                        <p>希望能与你在比特之海的繁星之下相见！</p>
+                        <div class="chatbox">
+                            <div class="line loading"><span></span><span></span><span></span></div>
+                        </div>
+                    </div>
+                    <ul class="skill clear">
+                        <li>
+                            <p>minecraft</p>
+                            <div class="progress">
+                                <div style="width:100%"></div><span>java版狂热</span>
+                            </div>
+                        </li>
+                        <li>
+                            <p>Java</p>
+                            <div class="progress">
+                                <div style="width:55%"></div><span>JVM 修行中</span>
+                            </div>
+                        </li>
+                        <li>
+                            <p>minecraft server</p>
+                            <div class="progress">
+                                <div style="width:60%"></div><span>开服经验</span>
+                            </div>
+                        </li>
+                        <li>
+                            <p>网站设计</p>
+                            <div class="progress">
+                                <div style="width:40%"></div><span>前端新星</span>
+                            </div>
+                        </li>
+                        <li>
+                            <p>世界</p>
+                            <div class="progress">
+                                <div style="width:20%"></div><span>观测世界程度的能力</span>
+                            </div>
+                        </li>
+                        <li>
+                            <p>搞事情</p>
+                            <div class="progress">
+                                <div style="width:82%"></div><span>让事情发生程度的能力</span>
+                            </div>
+                        </li>
+                        <li>
+                            <p>魔法</p>
+                            <div class="progress">
+                                <div style="width:12%"></div><span>和普通人相同程度的能力</span>
+                            </div>
+                        </li>
+                        <li>
+                            <p>MoePower</p>
+                            <div class="progress">
+                                <div style="width:99%"></div><span>成为萌二程度的能力</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="find ch">
+            <div class="container links">
+                <h2 class="chtitle">CTN活跃的<span>平台</span></h2>
+                <div class="clear col-3"><a href="https://qm.qq.com/q/SnAKU7kiAM" target="_blank">
+                        <div class="item">
+                            <div class="bg"></div>
+                            <div class="inner"><i class="fab fa-qq fa-fw"></i><span>QQ</span>
+                                <p>常驻交流群</p>
+                            </div>
+                        </div>
+                    </a><a href="https://m.bilibili.com/space/1568237889" target="_blank">
+                        <div class="item">
+                            <div class="bg"></div>
+                            <div class="inner"><i class="fab fa-bilibili fa-fw"></i><span>Bilibili</span>
+                                <p>视频/动态</p>
+                            </div>
+                        </div>
+                    </a><a href="https://github.com/ctnBobong32" target="_blank">
+                        <div class="item">
+                            <div class="bg"></div>
+                            <div class="inner"><i class="fab fa-github fa-fw"></i><span>Github</span>
+                                <p>开源项目</p>
+                            </div>
+                        </div>
+                    </a><a href="https://discord.gg/snR5sQJ4" target="_blank">
+                        <div class="item">
+                            <div class="bg"></div>
+                            <div class="inner"><i class="fab fa-discord fa-fw"></i><span>Discord</span>
+                                <p>社区聊天</p>
+                            </div>
+                        </div>
+                    </a><a href="https://x.com/MC_ctnBobong32" target="_blank">
+                        <div class="item">
+                            <div class="bg"></div>
+                            <div class="inner"><i class="fab fa-twitter fa-fw"></i><span>X (Twitter)</span>
+                                <p>实时动态</p>
+                            </div>
+                        </div>
+                    </a><a href="https://t.me/ctnyyds32" target="_blank">
+                        <div class="item">
+                            <div class="bg"></div>
+                            <div class="inner"><i class="fab fa-telegram fa-fw"></i><span>Telegram</span>
+                                <p>频道交流</p>
+                            </div>
+                        </div>
+                    </a><a href="https://youtube.com/@ctnbobong32" target="_blank">
+                        <div class="item">
+                            <div class="bg"></div>
+                            <div class="inner"><i class="fab fa-youtube fa-fw"></i><span>YouTube</span>
+                                <p>视频分享</p>
+                            </div>
+                        </div>
+                    </a><a href="https://www.x6d.com/" target="_blank">
+                        <div class="item">
+                            <div class="bg"></div>
+                            <div class="inner"><i class="fas fa-globe fa-fw"></i><span>旧友小站</span>
+                                <p>回忆之地</p>
+                            </div>
+                        </div>
+                    </a></div>
+            </div>
+        </div>
+        <div class="gate ch">
+            <div class="container links">
+                <h2 class="chtitle">CTN的<span>朋友</span>们</h2>
+                <div class="clear"><a href="#">
+                        <div class="item">
+                            <div class="avatar"><i class="fas fa-user-circle fa-2x"></i></div>
+                            <div class="inner">
+                                <h5>陃子</h5>
+                                <p>和平玩家老同学</p>
+                            </div>
+                        </div>
+                    </a><a href="#">
+                        <div class="item">
+                            <div class="avatar"><i class="fas fa-user-circle fa-2x"></i></div>
+                            <div class="inner">
+                                <h5>毫无存在感的徐大鸟</h5>
+                                <p>让老师"快乐"两年半</p>
+                            </div>
+                        </div>
+                    </a><a href="#">
+                        <div class="item">
+                            <div class="avatar"><i class="fas fa-user-circle fa-2x"></i></div>
+                            <div class="inner">
+                                <h5>涛涛</h5>
+                                <p>屑B和平玩家老同学</p>
+                            </div>
+                        </div>
+                    </a><a href="#">
+                        <div class="item">
+                            <div class="avatar"><i class="fas fa-user-circle fa-2x"></i></div>
+                            <div class="inner">
+                                <h5>小明</h5>
+                                <p>帅B</p>
+                            </div>
+                        </div>
+                    </a><a href="#">
+                        <div class="item">
+                            <div class="avatar"><i class="fas fa-user-circle fa-2x"></i></div>
+                            <div class="inner">
+                                <h5>少雨</h5>
+                                <p>帅B2号</p>
+                            </div>
+                        </div>
+                    </a><a href="#">
+                        <div class="item">
+                            <div class="avatar"><i class="fas fa-user-circle fa-2x"></i></div>
+                            <div class="inner">
+                                <h5>周时雨</h5>
+                                <p>坏B一位</p>
+                            </div>
+                        </div>
+                    </a><a href="#">
+                        <div class="item">
+                            <div class="avatar"><i class="fas fa-user-circle fa-2x"></i></div>
+                            <div class="inner">
+                                <h5>廖鑫</h5>
+                                <p>天才+老同学</p>
+                            </div>
+                        </div>
+                    </a><a href="#">
+                        <div class="item">
+                            <div class="avatar"><i class="fas fa-user-circle fa-2x"></i></div>
+                            <div class="inner">
+                                <h5>龙头</h5>
+                                <p>水龙头一位</p>
+                            </div>
+                        </div>
+                    </a></div>
+            </div>
+        </div>
+        <div class="footer ch">
+            <div class="container">
+                <h3>CTN私人网站</h3>
+                <p>蘑菇森林的尽头，新世界的起点</p>
+                <p class="c"><a href="#" id="play-music-link">播放音乐</a></p>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
-
-<div class="find ch">
-  <div class="container links">
-    <h2 class="chtitle">CTN活跃的<span>平台</span></h2>
-    <div class="clear col-3">
-
-      <a href="https://qm.qq.com/q/SnAKU7kiAM" target="_blank">
-        <div class="item">
-          <div class="bg" style="background-image:url('https://favicon.im/https://wiki.connect.qq.com/')"></div>
-          <div class="inner">
-            <span>QQ</span>
-            <p>最常用的聊天工具，方便联系朋友和群组</p>
-          </div>
-        </div>
-      </a>
-
-      <a href="https://m.bilibili.com/space/1568237889" target="_blank">
-        <div class="item">
-          <div class="bg" style="background-image:url('https://favicon.im/link.bilibili.com')"></div>
-          <div class="inner">
-            <span>Bilibili</span>
-            <p>国内最大的二次元视频网站，追番、视频分享</p>
-          </div>
-        </div>
-      </a>
-
-      <a href="https://github.com/ctnBobong32" target="_blank">
-        <div class="item">
-          <div class="bg" style="background-image:url('https://favicon.im/github.com')"></div>
-          <div class="inner">
-            <span>Github</span>
-            <p>开源代码托管和项目浏览平台</p>
-          </div>
-        </div>
-      </a>
-
-      <a href="https://discord.gg/snR5sQJ4" target="_blank">
-        <div class="item">
-          <div class="bg" style="background-image:url('https://favicon.im/discord.com')"></div>
-          <div class="inner">
-            <span>Discord</span>
-            <p>多功能社区聊天与语音交流平台</p>
-          </div>
-        </div>
-      </a>
-
-      <a href="https://x.com/MC_ctnBobong32" target="_blank">
-        <div class="item">
-          <div class="bg" style="background-image:url('https://favicon.im/x.com')"></div>
-          <div class="inner">
-            <span>X</span>
-            <p>实时社交动态分享，类似微博</p>
-          </div>
-        </div>
-      </a>
-
-      <a href="https://t.me/ctnyyds32" target="_blank">
-        <div class="item">
-          <div class="bg" style="background-image:url('https://favicon.im/telegram.org')"></div>
-          <div class="inner">
-            <span>Telegram</span>
-            <p>跨平台即时通讯，频道和群组功能</p>
-          </div>
-        </div>
-      </a>
-
-      <a href="https://youtube.com/@ctnbobong32" target="_blank">
-        <div class="item">
-          <div class="bg" style="background-image:url('https://favicon.im/youtube.com')"></div>
-          <div class="inner">
-            <span>YouTube</span>
-            <p>全球视频平台，观看和分享视频</p>
-          </div>
-        </div>
-      </a>
-
-    </div>
-  </div>
-</div>
-
-<div class="footer ch">
-  <div class="container">
-    <h3>CTN的网站</h3>
-    <p>互联网的尽头，新世界的起点</p>
-    <p><a href="#" id="play-music-link">播放音乐</a></p>
-  </div>
-</div>
-
-<audio id="bg-music"></audio>
-
-<script>
-(function(){
-  const audio=document.getElementById('bg-music');
-  const apis=[
-    {url:'https://api.52vmy.cn/api/music/wy/rand',extract:d=>d.data?.Music},
-    {url:'https://api-v2.cenguigui.cn/api/netease/',extract:d=>d.data?.play_url},
-    {url:'https://api.zxki.cn/api/wyyrg',extract:d=>d.data?.url}
-  ];
-  function play(url){audio.src=url;audio.play().catch(()=>{});}
-  async function load(){
-    const api=apis[Math.floor(Math.random()*apis.length)];
-    try{
-      const r=await fetch(api.url);
-      const j=await r.json();
-      const u=api.extract(j);
-      if(u) play(u);
-    }catch(e){}
-  }
-  document.getElementById('play-music-link').onclick=function(e){e.preventDefault();load();}
-  setTimeout(load,800);
-})();
-document.onkeydown=function(e){
-  if(e.keyCode==123)return false;
-  if(e.ctrlKey&&e.shiftKey&&e.keyCode==73)return false;
-  if(e.ctrlKey&&e.keyCode==85)return false;
-};
-setInterval(function(){Function('debugger')();},3000);
-console.log=console.warn=console.error=function(){};
-</script>
-
+    <audio id="bg-music" preload="none"></audio>
+    <script>
+        (function(){const c=document.getElementById('startrack');if(c){let w=innerWidth,h=innerHeight;c.width=w;c.height=h;const ctx=c.getContext('2d'),stars=[];for(let i=400;i--;)stars.push({x:Math.random()*w,y:Math.random()*h,radius:Math.random()*2+.8,alpha:Math.random()*.6+.3,speedY:.2+Math.random()*.5});function draw(){const grad=ctx.createLinearGradient(0,0,0,h);grad.addColorStop(0,'#050a18');grad.addColorStop(1,'#0a1028');ctx.fillStyle=grad;ctx.fillRect(0,0,w,h);for(let s of stars){ctx.beginPath();ctx.arc(s.x,s.y,s.radius,0,Math.PI*2);ctx.fillStyle=`rgba(255,240,200,${s.alpha})`;ctx.fill();s.y+=s.speedY;if(s.y>h){s.y=0;s.x=Math.random()*w}}requestAnimationFrame(draw)}draw();addEventListener('resize',()=>{w=innerWidth;h=innerHeight;c.width=w;c.height=h;for(let s of stars){s.x=Math.random()*w;s.y=Math.random()*h}})};const slogans=["思考中...","欢迎来到比特之海","方块与世界","Minecraft forever","开源精神永存","繁星之下相遇"];let idx=0;setInterval(()=>{const el=document.getElementById('slogan');if(el){el.style.opacity='0';setTimeout(()=>{idx=(idx+1)%slogans.length;el.textContent=slogans[idx];el.style.opacity='1'},200)}},4000);const audio=document.getElementById('bg-music'),apis=[{url:'https://api.52vmy.cn/api/music/wy/rand',extract:d=>d.data?.Music},{url:'https://api-v2.cenguigui.cn/api/netease/',extract:d=>d.data?.play_url},{url:'https://api.zxki.cn/api/wyyrg',extract:d=>d.data?.url}];function play(u){audio.src=u;audio.play().catch(()=>{})}async function load(){const api=apis[Math.floor(Math.random()*apis.length)];try{const r=await fetch(api.url),j=await r.json(),u=api.extract(j);u&&play(u)}catch(e){}}document.getElementById('play-music-link')?.addEventListener('click',e=>{e.preventDefault();load()});setTimeout(load,1500);document.addEventListener('contextmenu',e=>{e.preventDefault();alert('禁止查看源代码，您的行为已记录。');return false});document.onkeydown=e=>{if(e.keyCode===123||(e.ctrlKey&&e.shiftKey&&(e.keyCode===73||e.keyCode===74))||(e.ctrlKey&&e.keyCode===85)){e.preventDefault();alert('禁止查看源代码，您的行为已记录。');return false}if(e.ctrlKey&&e.keyCode===83){e.preventDefault();return false}};setInterval(()=>{Function('debugger')()},3000);console.log=console.warn=console.error=function(){};})();
+    </script>
 </body>
+
 </html>
